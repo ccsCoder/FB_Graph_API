@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>FB Search Demo</title>
+    <script>
+	  function statusChangeCallback(response) {
+	  	console.debug(response);
+	  };
+
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '421847638025357',
+	      cookie 	 : true,
+	      xfbml      : true,
+	      version    : 'v2.4'
+	    });
+	    // this here will get executed AFTER it asyncInits...
+	    FB.getLoginStatus(function(response) {
+    		statusChangeCallback(response);
+  	  	});
+	  };
+	
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	  	
+	  	
+
+
+	  // DOMElem.byId("searchButton").on("click",function(e) {
+		 //  //alert(DOMElem.byId("searchTerm").val());
+		 //  if(DOMElem.byId("searchTerm").val()==="") {
+			//   alert("Please enter a search term...");
+			//   return;
+		 //  }
+		 //  console.log("Commencing Search...");
+		 //  FB.api(
+			// 	  '/search',
+			// 	  'GET',
+			// 	  {access_token:'CAACEdEose0cBAEB38SMZA8qaGbE0HDaSQ1VnnZAzRcoWZBcJlOxa6zg09ZCCDejDpryiurjYAP6LtC6U6kpTjhPNIEvUaaomz8OCCcSVOsZB2Jm9yplXE3wYbkWyONIhN4T37Nv6q3GuKXCQm439F65XQjsh4y7DKpZCcw46fCjJSReYnVsCjftZCeaBDhux2DfroG6Y82y9AZDZD'},
+			// 	  {"q":DOMElem.sanitize(DOMElem.byId("searchTerm").val()),"type":"page","limit":"10"},
+			// 	  function(response) {
+			// 	      // Insert your code here
+			// 	      console.debug(response);
+			// 	      console.log("Search Complete");
+			// 	  }
+			// 	);
+	  // },this); 
+	</script>
+  </head>
+	<script type="text/javascript" src="js/logic.js"></script>
+  <body>
+    <h1>A little bit of Jessica</h1>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+	</fb:login-button>
+	</br>
+    Search for: <input type="text" name="searchTerm" id="searchTerm"/> 
+    <button id="searchButton">Search</button>
+	
+    
+
+	<div id="status">
+	</div>
+  </body>
+</html>
